@@ -1,0 +1,10 @@
+{
+  "MLModelVersionStringKey" : "--",
+  "MLModelDescriptionKey" : "--",
+  "MLModelCreatorDefinedKey" : {
+    "com.apple.sentinel.model.type" : "object_detection",
+    "com.apple.coreml.model.preview.params" : "{\"labels\": [\"defect\", \"inspect object\"]}"
+  },
+  "MLModelAuthorKey" : "--",
+  "MLModelLicenseKey" : "--"
+}

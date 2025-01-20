@@ -1,0 +1,27 @@
+{
+  "Inputs" : {
+    "image" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "confidenceThreshold" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "iouThreshold" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Outputs" : {
+    "nmsed_pred_boxes" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "nmsed_pred_scores" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  },
+  "States" : {
+
+  }
+}
