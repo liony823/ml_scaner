@@ -2,6 +2,8 @@
 
 cd ml_scanner_server
 
+以下命令 都在ml_scanner_server目录下操作
+
 python -m venv venv
 
 source venv/bin/activate
