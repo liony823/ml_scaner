@@ -56,7 +56,7 @@ class DetectionManager: ObservableObject {
                         continue
                     }
                     
-                    if score > 0.5 {
+                    if score > 0.3 {
                         hasDefect = true
                         resultDescription += String(
                             format: "发现缺陷(置信度: %.1f%%, 位置: [%.2f, %.2f, %.2f, %.2f]) ",
@@ -143,4 +143,4 @@ struct DetectionResult: Codable {
 // 添加通知名称
 extension Notification.Name {
     static let startCamera = Notification.Name("startCamera")
-} 
+}
