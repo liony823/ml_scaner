@@ -1,0 +1,13 @@
+.vscode
+.DS_Store
+.idea
+venv
+__pycache__
+*.jpg
+*.png
+*.jpeg
+*.bmp
+*.gif
+*.tiff
+*.ico
+*.webp
