@@ -1131,3 +1131,345 @@
 2025-03-18 11:14:11,322 - INFO - PLC管理器初始化成功
 2025-03-18 11:14:11,323 - WARNING -  * Debugger is active!
 2025-03-18 11:14:11,334 - INFO -  * Debugger PIN: 672-779-162
+2025-03-20 11:23:50,558 - FileMonitorTest - INFO - === 开始基本监控测试 ===
+2025-03-20 11:23:50,559 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:23:50,559 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:50,559 - FileMonitorTest - INFO - 监控已启动
+2025-03-20 11:23:50,560 - FileMonitorTest - INFO - 写入内容到文件: 测试内容1
+2025-03-20 11:23:51,065 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:23:51,066 - FileMonitor - INFO - 读取到内容: 测试内容1
+2025-03-20 11:23:51,066 - FileMonitorTest - INFO - 收到回调内容: 测试内容1
+2025-03-20 11:23:51,566 - FileMonitorTest - INFO - 写入内容到文件: 测试内容2
+2025-03-20 11:23:51,572 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:23:51,573 - FileMonitor - INFO - 读取到内容: 测试内容2
+2025-03-20 11:23:51,573 - FileMonitorTest - INFO - 收到回调内容: 测试内容2
+2025-03-20 11:23:52,578 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 28, 当前内容长度: 12
+2025-03-20 11:23:52,579 - FileMonitorTest - INFO - 监控已停止
+2025-03-20 11:23:52,580 - FileMonitorTest - INFO - 写入内容到文件: 测试内容3 - 不应被检测
+2025-03-20 11:23:53,585 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 28, 上次内容长度: 12
+2025-03-20 11:23:53,588 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:53,588 - FileMonitorTest - INFO - 监控已重新启动
+2025-03-20 11:23:53,589 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:23:53,590 - FileMonitor - INFO - 读取到内容: 测试内容3-不应被检测
+2025-03-20 11:23:53,591 - FileMonitorTest - INFO - 写入内容到文件: 测试内容4 - 应该检测到
+2025-03-20 11:23:53,591 - FileMonitorTest - INFO - 收到回调内容: 测试内容3-不应被检测
+2025-03-20 11:23:54,095 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:23:54,095 - FileMonitor - INFO - 读取到内容: 测试内容4-应该检测到
+2025-03-20 11:23:54,095 - FileMonitorTest - INFO - 收到回调内容: 测试内容4-应该检测到
+2025-03-20 11:23:54,601 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 92, 当前内容长度: 40
+2025-03-20 11:23:54,601 - FileMonitorTest - INFO - 监控已最终停止
+2025-03-20 11:23:54,601 - FileMonitorTest - INFO - 接收到的内容: ['测试内容1', '测试内容2', '测试内容3-不应被检测', '测试内容4-应该检测到']
+2025-03-20 11:23:54,602 - FileMonitorTest - INFO - === 基本监控测试通过 ===
+2025-03-20 11:23:54,602 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 92, 当前内容长度: 40
+2025-03-20 11:23:55,607 - FileMonitorTest - INFO - === 开始并发操作测试 ===
+2025-03-20 11:23:55,609 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:23:55,611 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:55,726 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容9
+2025-03-20 11:23:55,951 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容6
+2025-03-20 11:23:55,957 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容3
+2025-03-20 11:23:55,979 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容1
+2025-03-20 11:23:56,001 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容2
+2025-03-20 11:23:56,029 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容7
+2025-03-20 11:23:56,036 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容5
+2025-03-20 11:23:56,056 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容4
+2025-03-20 11:23:56,078 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容8
+2025-03-20 11:23:56,081 - FileMonitorTest - INFO - 写入内容到文件: 并发测试内容0
+2025-03-20 11:23:56,114 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 0, 当前内容长度: 0
+2025-03-20 11:23:56,114 - FileMonitorTest - INFO - 测试中停止监控
+2025-03-20 11:23:56,597 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:23:56,600 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:56,601 - FileMonitorTest - INFO - 测试中重启监控
+2025-03-20 11:23:56,601 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:23:56,602 - FileMonitor - INFO - 读取到内容: 并发测试内容9并发测试内容6并发测试内容3并发测试内容1并发测试内容2并发测试内容7并发测试内容5并发测试内容4并发测试内容8并发测试内容0
+2025-03-20 11:23:56,603 - FileMonitorTest - INFO - 收到回调内容: 并发测试内容9并发测试内容6并发测试内容3并发测试内容1并发测试内容2并发测试内容7并发测试内容5并发测试内容4并发测试内容8并发测试内容0
+2025-03-20 11:23:57,108 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 200, 当前内容长度: 80
+2025-03-20 11:23:57,109 - FileMonitorTest - INFO - 测试中停止监控
+2025-03-20 11:23:57,536 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 200, 上次内容长度: 80
+2025-03-20 11:23:57,537 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:57,538 - FileMonitorTest - INFO - 测试中重启监控
+2025-03-20 11:23:58,043 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 200, 当前内容长度: 80
+2025-03-20 11:23:58,044 - FileMonitorTest - INFO - 测试中停止监控
+2025-03-20 11:23:58,259 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 200, 上次内容长度: 80
+2025-03-20 11:23:58,263 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:58,264 - FileMonitorTest - INFO - 测试中重启监控
+2025-03-20 11:23:58,767 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 200, 当前内容长度: 80
+2025-03-20 11:23:58,768 - FileMonitorTest - INFO - 测试中停止监控
+2025-03-20 11:23:59,139 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 200, 上次内容长度: 80
+2025-03-20 11:23:59,142 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:59,142 - FileMonitorTest - INFO - 测试中重启监控
+2025-03-20 11:23:59,644 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 200, 当前内容长度: 80
+2025-03-20 11:23:59,645 - FileMonitorTest - INFO - 测试中停止监控
+2025-03-20 11:23:59,891 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 200, 上次内容长度: 80
+2025-03-20 11:23:59,892 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:23:59,893 - FileMonitorTest - INFO - 测试中重启监控
+2025-03-20 11:24:00,896 - FileMonitorTest - INFO - 写入内容到文件: 最终测试内容
+2025-03-20 11:24:00,901 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:00,901 - FileMonitor - INFO - 读取到内容: 最终测试内容
+2025-03-20 11:24:00,902 - FileMonitorTest - INFO - 收到回调内容: 最终测试内容
+2025-03-20 11:24:01,911 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 219, 当前内容长度: 87
+2025-03-20 11:24:01,913 - FileMonitorTest - INFO - 并发测试接收到的内容数量: 2
+2025-03-20 11:24:01,913 - FileMonitorTest - INFO - 并发测试接收到的内容: ['并发测试内容9并发测试内容6并发测试内容3并发测试内容1并发测试内容2并发测试内容7并发测试内容5并发测试内容4并发测试内容8并发测试内容0', '最终测试内容']
+2025-03-20 11:24:01,913 - FileMonitorTest - INFO - === 并发操作测试完成 ===
+2025-03-20 11:24:01,913 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 219, 当前内容长度: 87
+2025-03-20 11:24:02,917 - FileMonitorTest - INFO - === 开始快速启动停止测试 ===
+2025-03-20 11:24:02,917 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:24:02,918 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:02,919 - FileMonitorTest - INFO - 快速测试 - 启动 #1
+2025-03-20 11:24:02,919 - FileMonitorTest - INFO - 写入内容到文件: 快速测试内容0
+2025-03-20 11:24:03,424 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 0, 当前内容长度: 0
+2025-03-20 11:24:03,425 - FileMonitorTest - INFO - 快速测试 - 停止 #1
+2025-03-20 11:24:03,425 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:24:03,426 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:03,427 - FileMonitorTest - INFO - 快速测试 - 启动 #2
+2025-03-20 11:24:03,427 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:24:03,428 - FileMonitor - INFO - 读取到内容: 快速测试内容0
+2025-03-20 11:24:03,428 - FileMonitorTest - INFO - 收到回调内容: 快速测试内容0
+2025-03-20 11:24:03,934 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 20, 当前内容长度: 8
+2025-03-20 11:24:03,935 - FileMonitorTest - INFO - 快速测试 - 停止 #2
+2025-03-20 11:24:03,935 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 20, 上次内容长度: 8
+2025-03-20 11:24:03,937 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:03,938 - FileMonitorTest - INFO - 快速测试 - 启动 #3
+2025-03-20 11:24:04,442 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 20, 当前内容长度: 8
+2025-03-20 11:24:04,443 - FileMonitorTest - INFO - 快速测试 - 停止 #3
+2025-03-20 11:24:04,443 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 20, 上次内容长度: 8
+2025-03-20 11:24:04,445 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:04,446 - FileMonitorTest - INFO - 快速测试 - 启动 #4
+2025-03-20 11:24:04,446 - FileMonitorTest - INFO - 写入内容到文件: 快速测试内容3
+2025-03-20 11:24:04,951 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 20, 当前内容长度: 8
+2025-03-20 11:24:04,952 - FileMonitorTest - INFO - 快速测试 - 停止 #4
+2025-03-20 11:24:04,952 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 20, 上次内容长度: 8
+2025-03-20 11:24:04,954 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:04,954 - FileMonitorTest - INFO - 快速测试 - 启动 #5
+2025-03-20 11:24:04,955 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:04,955 - FileMonitor - INFO - 读取到内容: 快速测试内容3
+2025-03-20 11:24:04,955 - FileMonitorTest - INFO - 收到回调内容: 快速测试内容3
+2025-03-20 11:24:05,461 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 40, 当前内容长度: 16
+2025-03-20 11:24:05,463 - FileMonitorTest - INFO - 快速测试 - 停止 #5
+2025-03-20 11:24:05,463 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 40, 上次内容长度: 16
+2025-03-20 11:24:05,467 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:05,467 - FileMonitorTest - INFO - 快速测试 - 启动 #6
+2025-03-20 11:24:05,973 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 40, 当前内容长度: 16
+2025-03-20 11:24:05,973 - FileMonitorTest - INFO - 快速测试 - 停止 #6
+2025-03-20 11:24:05,973 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 40, 上次内容长度: 16
+2025-03-20 11:24:05,974 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:05,974 - FileMonitorTest - INFO - 快速测试 - 启动 #7
+2025-03-20 11:24:05,974 - FileMonitorTest - INFO - 写入内容到文件: 快速测试内容6
+2025-03-20 11:24:06,480 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 40, 当前内容长度: 16
+2025-03-20 11:24:06,481 - FileMonitorTest - INFO - 快速测试 - 停止 #7
+2025-03-20 11:24:06,481 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 40, 上次内容长度: 16
+2025-03-20 11:24:06,482 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:06,483 - FileMonitorTest - INFO - 快速测试 - 启动 #8
+2025-03-20 11:24:06,483 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:06,484 - FileMonitor - INFO - 读取到内容: 快速测试内容6
+2025-03-20 11:24:06,484 - FileMonitorTest - INFO - 收到回调内容: 快速测试内容6
+2025-03-20 11:24:06,990 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 60, 当前内容长度: 24
+2025-03-20 11:24:06,990 - FileMonitorTest - INFO - 快速测试 - 停止 #8
+2025-03-20 11:24:06,991 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 60, 上次内容长度: 24
+2025-03-20 11:24:06,992 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:06,993 - FileMonitorTest - INFO - 快速测试 - 启动 #9
+2025-03-20 11:24:07,499 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 60, 当前内容长度: 24
+2025-03-20 11:24:07,500 - FileMonitorTest - INFO - 快速测试 - 停止 #9
+2025-03-20 11:24:07,500 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 60, 上次内容长度: 24
+2025-03-20 11:24:07,502 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:07,503 - FileMonitorTest - INFO - 快速测试 - 启动 #10
+2025-03-20 11:24:07,504 - FileMonitorTest - INFO - 写入内容到文件: 快速测试内容9
+2025-03-20 11:24:08,010 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 60, 当前内容长度: 24
+2025-03-20 11:24:08,013 - FileMonitorTest - INFO - 快速测试 - 停止 #10
+2025-03-20 11:24:08,016 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 60, 上次内容长度: 24
+2025-03-20 11:24:08,018 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:08,027 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:08,028 - FileMonitorTest - INFO - 写入内容到文件: 快速测试最终内容
+2025-03-20 11:24:08,030 - FileMonitor - INFO - 读取到内容: 快速测试内容9快速测试最终内容
+2025-03-20 11:24:08,030 - FileMonitorTest - INFO - 收到回调内容: 快速测试内容9快速测试最终内容
+2025-03-20 11:24:08,537 - FileMonitor - INFO - 文件内容未变化，无需处理
+2025-03-20 11:24:08,537 - FileMonitor - WARNING - 没有检测到新内容
+2025-03-20 11:24:09,043 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 105, 当前内容长度: 41
+2025-03-20 11:24:09,043 - FileMonitorTest - INFO - 快速测试接收到的内容: ['快速测试内容0', '快速测试内容3', '快速测试内容6', '快速测试内容9快速测试最终内容']
+2025-03-20 11:24:09,043 - FileMonitorTest - INFO - === 快速启动停止测试完成 ===
+2025-03-20 11:24:09,043 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 105, 当前内容长度: 41
+2025-03-20 11:24:10,048 - FileMonitorTest - INFO - === 开始服务器模拟测试 ===
+2025-03-20 11:24:10,049 - FileMonitorTest - INFO - 服务器模拟 - PLC信号 #1
+2025-03-20 11:24:10,049 - FileMonitorTest - INFO - 服务器模拟 - 启动监控
+2025-03-20 11:24:10,049 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:24:10,050 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:10,556 - FileMonitorTest - INFO - 写入内容到文件: 模拟PLC触发的内容0
+2025-03-20 11:24:11,060 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:24:11,061 - FileMonitor - INFO - 读取到内容: 模拟PLC触发的内容0
+2025-03-20 11:24:11,061 - FileMonitorTest - INFO - 服务器模拟 - 收到内容: 模拟PLC触发的内容0
+2025-03-20 11:24:11,165 - FileMonitorTest - INFO - 服务器模拟 - 延迟停止监控
+2025-03-20 11:24:11,561 - FileMonitorTest - INFO - 服务器模拟 - 等待周期 #1 完成
+2025-03-20 11:24:11,567 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 26, 当前内容长度: 12
+2025-03-20 11:24:12,566 - FileMonitorTest - INFO - 服务器模拟 - PLC信号 #2
+2025-03-20 11:24:12,568 - FileMonitorTest - INFO - 服务器模拟 - 启动监控
+2025-03-20 11:24:12,570 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 26, 上次内容长度: 12
+2025-03-20 11:24:12,572 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:13,073 - FileMonitorTest - INFO - 写入内容到文件: 模拟PLC触发的内容1
+2025-03-20 11:24:13,577 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:13,578 - FileMonitor - INFO - 读取到内容: 模拟PLC触发的内容1
+2025-03-20 11:24:13,578 - FileMonitorTest - INFO - 服务器模拟 - 收到内容: 模拟PLC触发的内容1
+2025-03-20 11:24:13,684 - FileMonitorTest - INFO - 服务器模拟 - 延迟停止监控
+2025-03-20 11:24:14,078 - FileMonitorTest - INFO - 服务器模拟 - 等待周期 #2 完成
+2025-03-20 11:24:14,080 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 52, 当前内容长度: 24
+2025-03-20 11:24:15,083 - FileMonitorTest - INFO - 服务器模拟 - PLC信号 #3
+2025-03-20 11:24:15,084 - FileMonitorTest - INFO - 服务器模拟 - 启动监控
+2025-03-20 11:24:15,085 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 52, 上次内容长度: 24
+2025-03-20 11:24:15,086 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:15,587 - FileMonitorTest - INFO - 写入内容到文件: 模拟PLC触发的内容2
+2025-03-20 11:24:16,092 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:16,092 - FileMonitor - INFO - 读取到内容: 模拟PLC触发的内容2
+2025-03-20 11:24:16,092 - FileMonitorTest - INFO - 服务器模拟 - 收到内容: 模拟PLC触发的内容2
+2025-03-20 11:24:16,197 - FileMonitorTest - INFO - 服务器模拟 - 延迟停止监控
+2025-03-20 11:24:16,592 - FileMonitorTest - INFO - 服务器模拟 - 等待周期 #3 完成
+2025-03-20 11:24:16,598 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 78, 当前内容长度: 36
+2025-03-20 11:24:17,595 - FileMonitorTest - INFO - 服务器模拟 - PLC信号 #4
+2025-03-20 11:24:17,596 - FileMonitorTest - INFO - 服务器模拟 - 启动监控
+2025-03-20 11:24:17,596 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 78, 上次内容长度: 36
+2025-03-20 11:24:17,597 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:18,102 - FileMonitorTest - INFO - 写入内容到文件: 模拟PLC触发的内容3
+2025-03-20 11:24:18,603 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:18,604 - FileMonitor - INFO - 读取到内容: 模拟PLC触发的内容3
+2025-03-20 11:24:18,604 - FileMonitorTest - INFO - 服务器模拟 - 收到内容: 模拟PLC触发的内容3
+2025-03-20 11:24:18,709 - FileMonitorTest - INFO - 服务器模拟 - 延迟停止监控
+2025-03-20 11:24:19,108 - FileMonitorTest - INFO - 服务器模拟 - 等待周期 #4 完成
+2025-03-20 11:24:19,109 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 104, 当前内容长度: 48
+2025-03-20 11:24:20,113 - FileMonitorTest - INFO - 服务器模拟 - PLC信号 #5
+2025-03-20 11:24:20,114 - FileMonitorTest - INFO - 服务器模拟 - 启动监控
+2025-03-20 11:24:20,114 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 104, 上次内容长度: 48
+2025-03-20 11:24:20,116 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/test_input.txt
+2025-03-20 11:24:20,619 - FileMonitorTest - INFO - 写入内容到文件: 模拟PLC触发的内容4
+2025-03-20 11:24:20,620 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:24:20,620 - FileMonitor - INFO - 读取到内容: 模拟PLC触发的内容4
+2025-03-20 11:24:20,620 - FileMonitorTest - INFO - 服务器模拟 - 收到内容: 模拟PLC触发的内容4
+2025-03-20 11:24:20,722 - FileMonitorTest - INFO - 服务器模拟 - 延迟停止监控
+2025-03-20 11:24:21,126 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 130, 当前内容长度: 60
+2025-03-20 11:24:21,624 - FileMonitorTest - INFO - 服务器模拟 - 等待周期 #5 完成
+2025-03-20 11:24:22,624 - FileMonitorTest - INFO - 服务器模拟测试接收到的内容: ['模拟PLC触发的内容0', '模拟PLC触发的内容1', '模拟PLC触发的内容2', '模拟PLC触发的内容3', '模拟PLC触发的内容4']
+2025-03-20 11:24:22,625 - FileMonitorTest - INFO - === 服务器模拟测试完成 ===
+2025-03-20 11:24:22,625 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 130, 当前内容长度: 60
+2025-03-20 11:24:22,625 - FileMonitorTest - INFO - 所有测试完成!
+2025-03-20 11:24:39,506 - RealWorldTest - INFO - === 开始实际环境模拟测试 (持续30秒) ===
+2025-03-20 11:24:39,507 - RealWorldTest - INFO - 模拟PLC已启动
+2025-03-20 11:24:39,508 - RealWorldTest - INFO - 文件写入器已启动
+2025-03-20 11:24:39,508 - RealWorldTest - INFO - 测试将运行 30 秒...
+2025-03-20 11:24:40,820 - RealWorldTest - INFO - 写入条码到文件: TEST000000
+2025-03-20 11:24:41,415 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:41,417 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:24:41,419 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:41,420 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:41,421 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:24:41,421 - FileMonitor - INFO - 读取到内容: TEST000000
+2025-03-20 11:24:41,422 - RealWorldTest - INFO - 文件内容回调触发: TEST000000
+2025-03-20 11:24:41,422 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000000'}
+2025-03-20 11:24:41,526 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:41,930 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:41,931 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:42,561 - RealWorldTest - INFO - 写入条码到文件: TEST000001
+2025-03-20 11:24:43,230 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:43,231 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:43,232 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:43,233 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:43,234 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:43,234 - FileMonitor - INFO - 读取到内容: TEST000001
+2025-03-20 11:24:43,235 - RealWorldTest - INFO - 文件内容回调触发: TEST000001
+2025-03-20 11:24:43,235 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000001'}
+2025-03-20 11:24:43,341 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:43,742 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:43,743 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:44,363 - RealWorldTest - INFO - 写入条码到文件: TEST000002
+2025-03-20 11:24:45,230 - RealWorldTest - INFO - 写入条码到文件: TEST000003
+2025-03-20 11:24:45,743 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:45,744 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:45,744 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:45,744 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:45,745 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:45,745 - FileMonitor - INFO - 读取到内容: TEST000003
+2025-03-20 11:24:45,745 - RealWorldTest - INFO - 文件内容回调触发: TEST000003
+2025-03-20 11:24:45,745 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000003'}
+2025-03-20 11:24:45,796 - RealWorldTest - INFO - 写入条码到文件: TEST000004
+2025-03-20 11:24:45,847 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:46,251 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:46,253 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:46,950 - RealWorldTest - INFO - 写入条码到文件: TEST000005
+2025-03-20 11:24:48,165 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:48,166 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:48,167 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:48,167 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:48,167 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:48,168 - FileMonitor - INFO - 读取到内容: TEST000005
+2025-03-20 11:24:48,168 - RealWorldTest - INFO - 文件内容回调触发: TEST000005
+2025-03-20 11:24:48,169 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000005'}
+2025-03-20 11:24:48,215 - RealWorldTest - INFO - 写入条码到文件: TEST000006
+2025-03-20 11:24:48,271 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:48,673 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:48,674 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:49,163 - RealWorldTest - INFO - 写入条码到文件: TEST000007
+2025-03-20 11:24:50,827 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:50,827 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:50,827 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:50,828 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:50,828 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:50,828 - FileMonitor - INFO - 读取到内容: TEST000007
+2025-03-20 11:24:50,828 - RealWorldTest - INFO - 文件内容回调触发: TEST000007
+2025-03-20 11:24:50,828 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000007'}
+2025-03-20 11:24:50,934 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:51,161 - RealWorldTest - INFO - 写入条码到文件: TEST000008
+2025-03-20 11:24:51,335 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:51,335 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:52,536 - RealWorldTest - INFO - 写入条码到文件: TEST000009
+2025-03-20 11:24:53,792 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:53,792 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:53,793 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:53,793 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:53,793 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:53,793 - FileMonitor - INFO - 读取到内容: TEST000009
+2025-03-20 11:24:53,793 - RealWorldTest - INFO - 文件内容回调触发: TEST000009
+2025-03-20 11:24:53,794 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000009'}
+2025-03-20 11:24:53,897 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:54,049 - RealWorldTest - INFO - 写入条码到文件: TEST000010
+2025-03-20 11:24:54,300 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:54,300 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:55,691 - RealWorldTest - INFO - 写入条码到文件: TEST000011
+2025-03-20 11:24:55,997 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:55,997 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:55,998 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:55,999 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:55,999 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:55,999 - FileMonitor - INFO - 读取到内容: TEST000011
+2025-03-20 11:24:55,999 - RealWorldTest - INFO - 文件内容回调触发: TEST000011
+2025-03-20 11:24:55,999 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000011'}
+2025-03-20 11:24:56,101 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:56,501 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:56,501 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:57,340 - RealWorldTest - INFO - 写入条码到文件: TEST000012
+2025-03-20 11:24:57,959 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:24:57,960 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:24:57,961 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:24:57,962 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:24:57,963 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:24:57,963 - FileMonitor - INFO - 读取到内容: TEST000012
+2025-03-20 11:24:57,963 - RealWorldTest - INFO - 文件内容回调触发: TEST000012
+2025-03-20 11:24:57,964 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000012'}
+2025-03-20 11:24:58,068 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:24:58,470 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:24:58,470 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:24:58,593 - RealWorldTest - INFO - 写入条码到文件: TEST000013
+2025-03-20 11:24:59,951 - RealWorldTest - INFO - 写入条码到文件: TEST000014
+2025-03-20 11:25:00,237 - RealWorldTest - INFO - 模拟PLC发送'7'信号
+2025-03-20 11:25:00,238 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 10, 上次内容长度: 10
+2025-03-20 11:25:00,239 - FileMonitor - INFO - 开始监控文件: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/test_data/realworld_input.txt
+2025-03-20 11:25:00,239 - RealWorldTest - INFO - 文件监控已启动
+2025-03-20 11:25:00,239 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 11:25:00,239 - FileMonitor - INFO - 读取到内容: TEST000014
+2025-03-20 11:25:00,239 - RealWorldTest - INFO - 文件内容回调触发: TEST000014
+2025-03-20 11:25:00,240 - RealWorldTest - INFO - 模拟发送事件: start_detection, 数据: {'message': 'START', 'data': 'TEST000014'}
+2025-03-20 11:25:00,343 - RealWorldTest - INFO - 延迟停止文件监控
+2025-03-20 11:25:00,674 - RealWorldTest - INFO - 写入条码到文件: TEST000015
+2025-03-20 11:25:00,745 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 10, 当前内容长度: 10
+2025-03-20 11:25:00,746 - RealWorldTest - INFO - 文件监控已停止
+2025-03-20 11:48:25,598 - Server - INFO - 开始自动查找PLC设备...
+2025-03-20 11:48:25,601 - Server - INFO - 发现以下COM端口: ['/dev/cu.debug-console', '/dev/cu.wlan-debug', '/dev/cu.Bluetooth-Incoming-Port']
+2025-03-20 11:48:25,601 - Server - INFO - 尝试连接端口: /dev/cu.debug-console
+2025-03-20 11:48:25,601 - Server - INFO - 尝试连接PLC - 端口: /dev/cu.debug-console, 波特率: 9600
+2025-03-20 11:48:25,602 - Server - INFO - PLC连接初始化成功
+2025-03-20 11:48:25,602 - Server - INFO - 成功连接到PLC设备，端口: /dev/cu.debug-console
+2025-03-20 11:48:25,603 - Server - INFO - PLC管理器初始化成功

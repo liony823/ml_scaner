@@ -1,0 +1,85 @@
+2025-03-20 10:56:50,906 - TestFileMonitor - INFO - 开始测试file_monitor功能
+2025-03-20 10:56:50,906 - TestFileMonitor - INFO - === 开始测试一次性读取文件 ===
+2025-03-20 10:56:50,906 - TestFileMonitor - INFO - 写入测试内容: '测试内容-10:56:50'
+2025-03-20 10:56:50,907 - TestFileMonitor - INFO - 调用read_file_once读取内容
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 当前文件大小: 21, 上次文件大小: 0
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 读取到内容: '测试内容-10:56:50'
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 处理后内容: '测试内容-10:56:50'
+2025-03-20 10:56:50,907 - TestFileMonitor - INFO - 回调函数收到内容: '测试内容-10:56:50'
+2025-03-20 10:56:50,907 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:50,907 - TestFileMonitor - INFO - 修改测试内容: '修改后的内容-10:56:50'
+2025-03-20 10:56:50,907 - TestFileMonitor - INFO - 再次调用read_file_once读取内容
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 当前文件大小: 27, 上次文件大小: 21
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 10:56:50,907 - FileMonitor - INFO - 读取到内容: '50'
+2025-03-20 10:56:50,908 - FileMonitor - INFO - 处理后内容: '50'
+2025-03-20 10:56:50,908 - TestFileMonitor - INFO - 回调函数收到内容: '50'
+2025-03-20 10:56:50,908 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:50,908 - TestFileMonitor - INFO - === 一次性读取文件测试结束 ===
+2025-03-20 10:56:51,913 - TestFileMonitor - INFO - === 开始测试多次读取同一文件 ===
+2025-03-20 10:56:51,914 - TestFileMonitor - INFO - 写入测试内容: '循环测试内容 #1 - 10:56:51'
+2025-03-20 10:56:51,914 - TestFileMonitor - INFO - 第 1 次调用read_file_once读取内容
+2025-03-20 10:56:51,914 - FileMonitor - INFO - 当前文件大小: 32, 上次文件大小: 0
+2025-03-20 10:56:51,914 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 10:56:51,914 - FileMonitor - INFO - 读取到内容: '循环测试内容 #1 - 10:56:51'
+2025-03-20 10:56:51,914 - FileMonitor - INFO - 处理后内容: '循环测试内容#1-10:56:51'
+2025-03-20 10:56:51,915 - TestFileMonitor - INFO - 回调函数收到内容: '循环测试内容#1-10:56:51'
+2025-03-20 10:56:51,915 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:52,921 - TestFileMonitor - INFO - 写入测试内容: '循环测试内容 #2 - 10:56:52'
+2025-03-20 10:56:52,922 - TestFileMonitor - INFO - 第 2 次调用read_file_once读取内容
+2025-03-20 10:56:52,923 - FileMonitor - INFO - 当前文件大小: 32, 上次文件大小: 32
+2025-03-20 10:56:52,924 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 10:56:52,925 - FileMonitor - INFO - 读取到内容: '循环测试内容 #2 - 10:56:52'
+2025-03-20 10:56:52,925 - FileMonitor - INFO - 处理后内容: '循环测试内容#2-10:56:52'
+2025-03-20 10:56:52,926 - TestFileMonitor - INFO - 回调函数收到内容: '循环测试内容#2-10:56:52'
+2025-03-20 10:56:52,926 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:53,931 - TestFileMonitor - INFO - 写入测试内容: '循环测试内容 #3 - 10:56:53'
+2025-03-20 10:56:53,931 - TestFileMonitor - INFO - 第 3 次调用read_file_once读取内容
+2025-03-20 10:56:53,931 - FileMonitor - INFO - 当前文件大小: 32, 上次文件大小: 32
+2025-03-20 10:56:53,931 - FileMonitor - INFO - 文件大小相同但内容发生变化，使用全部内容
+2025-03-20 10:56:53,932 - FileMonitor - INFO - 读取到内容: '循环测试内容 #3 - 10:56:53'
+2025-03-20 10:56:53,932 - FileMonitor - INFO - 处理后内容: '循环测试内容#3-10:56:53'
+2025-03-20 10:56:53,932 - TestFileMonitor - INFO - 回调函数收到内容: '循环测试内容#3-10:56:53'
+2025-03-20 10:56:53,932 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:54,937 - TestFileMonitor - INFO - === 多次读取同一文件测试结束 ===
+2025-03-20 10:56:55,943 - TestFileMonitor - INFO - === 开始测试追加内容到文件 ===
+2025-03-20 10:56:55,944 - TestFileMonitor - INFO - 初始化文件内容
+2025-03-20 10:56:55,944 - TestFileMonitor - INFO - 第一次读取文件
+2025-03-20 10:56:55,944 - FileMonitor - INFO - 当前文件大小: 13, 上次文件大小: 0
+2025-03-20 10:56:55,944 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 10:56:55,944 - FileMonitor - INFO - 读取到内容: '初始内容
+'
+2025-03-20 10:56:55,945 - FileMonitor - INFO - 处理后内容: '初始内容'
+2025-03-20 10:56:55,945 - TestFileMonitor - INFO - 回调函数收到内容: '初始内容'
+2025-03-20 10:56:55,945 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:55,945 - TestFileMonitor - INFO - 追加内容到文件
+2025-03-20 10:56:55,945 - TestFileMonitor - INFO - 追加后读取文件
+2025-03-20 10:56:55,945 - FileMonitor - INFO - 当前文件大小: 29, 上次文件大小: 13
+2025-03-20 10:56:55,945 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 10:56:55,946 - FileMonitor - INFO - 读取到内容: '追加的内容
+'
+2025-03-20 10:56:55,946 - FileMonitor - INFO - 处理后内容: '追加的内容'
+2025-03-20 10:56:55,946 - TestFileMonitor - INFO - 回调函数收到内容: '追加的内容'
+2025-03-20 10:56:55,946 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:55,946 - TestFileMonitor - INFO - === 追加内容到文件测试结束 ===
+2025-03-20 10:56:56,951 - TestFileMonitor - INFO - === 开始测试边缘情况 ===
+2025-03-20 10:56:56,952 - TestFileMonitor - INFO - 清空文件内容
+2025-03-20 10:56:56,952 - TestFileMonitor - INFO - 尝试读取空文件
+2025-03-20 10:56:56,953 - FileMonitor - WARNING - 文件为空: /Users/lion/Downloads/ml_scaner-main/ml_scanner_server/input/input.txt
+2025-03-20 10:56:56,953 - TestFileMonitor - INFO - 读取空文件结果: 失败 (这是预期的)
+2025-03-20 10:56:56,953 - TestFileMonitor - INFO - 写入内容: '相同的内容'
+2025-03-20 10:56:56,953 - TestFileMonitor - INFO - 第一次读取内容
+2025-03-20 10:56:56,954 - FileMonitor - INFO - 当前文件大小: 15, 上次文件大小: 0
+2025-03-20 10:56:56,954 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 10:56:56,954 - FileMonitor - INFO - 读取到内容: '相同的内容'
+2025-03-20 10:56:56,955 - FileMonitor - INFO - 处理后内容: '相同的内容'
+2025-03-20 10:56:56,955 - TestFileMonitor - INFO - 回调函数收到内容: '相同的内容'
+2025-03-20 10:56:56,955 - TestFileMonitor - INFO - 读取结果: 成功
+2025-03-20 10:56:56,955 - TestFileMonitor - INFO - 再次读取相同内容
+2025-03-20 10:56:56,956 - FileMonitor - INFO - 当前文件大小: 15, 上次文件大小: 15
+2025-03-20 10:56:56,956 - FileMonitor - INFO - 文件内容未变化，无需处理
+2025-03-20 10:56:56,956 - FileMonitor - INFO - 没有检测到新内容
+2025-03-20 10:56:56,956 - TestFileMonitor - INFO - 读取相同内容结果: 成功
+2025-03-20 10:56:56,956 - TestFileMonitor - INFO - === 边缘情况测试结束 ===
+2025-03-20 10:56:56,956 - TestFileMonitor - INFO - 所有测试完成

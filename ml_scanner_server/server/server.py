@@ -9,6 +9,7 @@ import serial.tools.list_ports
 import time
 from pathlib import Path
 from file_monitor import InputFileMonitor
+from logger_config import setup_logging, get_logger
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -16,50 +17,73 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 # 项目根目录
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(BASE_DIR / 'logs' / 'server.log'),
-        logging.StreamHandler()
-    ]
-)
+# 设置日志目录
+LOGS_DIR = BASE_DIR / 'logs'
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
+# 初始化日志配置
+setup_logging(LOGS_DIR)
+logger = get_logger("Server")
 
 INPUT_FILE = BASE_DIR / "input" / "input.txt"
 if not INPUT_FILE.exists():
     INPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     INPUT_FILE.touch()
-LOGS_DIR = BASE_DIR / 'logs'
+
 IMAGES_OK_DIR = BASE_DIR / 'Images' / 'OK'
 IMAGES_NG_DIR = BASE_DIR / 'Images' / 'NG'
 
-for dir_path in [LOGS_DIR, IMAGES_OK_DIR, IMAGES_NG_DIR]:
+for dir_path in [IMAGES_OK_DIR, IMAGES_NG_DIR]:
     dir_path.mkdir(parents=True, exist_ok=True)
 
+# 创建单一的文件监控器实例
 # 文件监控器实例
+last_instance_id = 0
 file_monitor = None
+# 添加监控器锁，保护对file_monitor的并发访问
+monitor_lock = threading.Lock()
 
 # 当收到文件内容时的回调函数
 def on_file_content(content):
-    logging.info(f"读取到文件内容: {content}")
+    logger.info(f"读取到文件内容: {content}")
     # 发送开始检测的信号
     socketio.emit('start_detection', {'message': 'START', 'data': content})
-    # 停止文件监控
-    if file_monitor:
-        file_monitor.stop_monitoring()
+
+    def delayed_stop():
+        logger.info("计划延迟停止文件监控")
+        stop_file_monitoring()
+    
+    # 使用线程延迟停止监控
+    timer = threading.Timer(0.1, delayed_stop)
+    timer.daemon = True
+    timer.start()
 
 def start_file_monitoring():
-    global file_monitor
-    if file_monitor is None:
-        file_monitor = InputFileMonitor(str(INPUT_FILE))
-    file_monitor.start_monitoring(on_file_content)
+    global file_monitor, last_instance_id
+    current_id = id(file_monitor) if file_monitor else 0
+    
+    logger.info(f"启动文件监控 - 当前实例ID: {current_id}, 上次记录ID: {last_instance_id}")
+
+    with monitor_lock:
+        if file_monitor is None:
+            logger.info("创建新的文件监控器实例")
+            file_monitor = InputFileMonitor(str(INPUT_FILE))
+            last_instance_id = id(file_monitor)
+        elif current_id != last_instance_id and last_instance_id != 0:
+            logger.warning(f"实例ID变化 ({last_instance_id} -> {current_id}")
+            # 记录新实例ID但不重新创建
+            last_instance_id = current_id
+            
+        file_monitor.start_monitoring(on_file_content)
+        logger.info("文件监控已启动")
 
 def stop_file_monitoring():
+    logger.info("请求停止文件监控")
     global file_monitor
-    if file_monitor:
-        file_monitor.stop_monitoring()
-        file_monitor = None
+    with monitor_lock:
+        if file_monitor:
+            file_monitor.stop_monitoring()
+            logger.info("文件监控已停止")
 
 class PLCManager:
     def __init__(self, port=None, baudrate=9600):
@@ -73,36 +97,37 @@ class PLCManager:
         else:
             self.connect(port, baudrate)
 
+
     def auto_connect(self, baudrate=9600):
         """自动查找并连接PLC设备"""
-        logging.info("开始自动查找PLC设备...")
+        logger.info("开始自动查找PLC设备...")
 
         
         available_ports = list(serial.tools.list_ports.comports())
         if not available_ports:
-            logging.error("未找到任何COM端口设备")
+            logger.error("未找到任何COM端口设备")
             return False
         
-        logging.info(f"发现以下COM端口: {[port.device for port in available_ports]}")
+        logger.info(f"发现以下COM端口: {[port.device for port in available_ports]}")
         
         # 尝试连接每个可用端口
         for port_info in available_ports:
             port = port_info.device
-            logging.info(f"尝试连接端口: {port}")
+            logger.info(f"尝试连接端口: {port}")
             try:
                 if self.connect(port, baudrate):
-                    logging.info(f"成功连接到PLC设备，端口: {port}")
+                    logger.info(f"成功连接到PLC设备，端口: {port}")
                     return True
             except Exception as e:
-                logging.warning(f"尝试连接端口 {port} 失败: {e}")
+                logger.warning(f"尝试连接端口 {port} 失败: {e}")
                 continue
         
-        logging.error("无法找到可用的PLC设备")
+        logger.error("无法找到可用的PLC设备")
         return False
 
     def connect(self, port, baudrate=9600):
         """连接到指定的COM端口"""
-        logging.info(f"尝试连接PLC - 端口: {port}, 波特率: {baudrate}")
+        logger.info(f"尝试连接PLC - 端口: {port}, 波特率: {baudrate}")
         try:
             self.serial_port = serial.Serial(
                 port=port,
@@ -116,10 +141,10 @@ class PLCManager:
             self.read_thread = threading.Thread(target=self._read_plc)
             self.read_thread.daemon = True  # 设置为守护线程，主程序退出时自动结束
             self.read_thread.start()
-            logging.info("PLC连接初始化成功")
+            logger.info("PLC连接初始化成功")
             return True
         except Exception as e:
-            logging.error(f"PLC连接初始化失败: {e}")
+            logger.error(f"PLC连接初始化失败: {e}")
             return False
 
     def _read_plc(self):
@@ -128,43 +153,42 @@ class PLCManager:
             try:
                 if self.serial_port.in_waiting:
                     data = self.serial_port.read(self.serial_port.in_waiting)
-                    logging.info(f"收到PLC信号: {data}")
-                    logging.info(f"PLC信号长度: {len(data)}")
+                    logger.info(f"收到PLC信号: {data}")
+                    logger.info(f"PLC信号长度: {len(data)}")
                     if data:
                         if b'7' in data:
                             logging.info("检测到'7'信号，开始监控文件以获取检测内容")
                             # 启动文件监控来读取input.txt
-                            stop_file_monitoring() 
                             start_file_monitoring()
-                            
             except Exception as e:
-                logging.error(f"读取PLC数据错误: {e}")
+                logger.error(f"读取PLC数据错误: {e}", exc_info=True)
             time.sleep(0.1)
 
     def send_command(self, command):
-        logging.info(f"发送PLC命令: {command.hex()}")
+        logger.info(f"发送PLC命令: {command.hex()}")
         try:
             self.serial_port.write(command)
             response = self.serial_port.read(7)
-            logging.info(f"PLC响应: {response.hex()}")
+            logger.info(f"PLC响应: {response.hex()}")
             return response
         except Exception as e:
-            logging.error(f"PLC通信错误: {e}")
+            logger.error(f"PLC通信错误: {e}", exc_info=True)
             raise
     
     def close(self):
-        logging.info("关闭PLC连接")
+        logger.info("关闭PLC连接")
         self.running = False
-        if self.read_thread.is_alive():
+        if self.read_thread and self.read_thread.is_alive():
             self.read_thread.join()
-        self.serial_port.close()
+        if self.serial_port and self.serial_port.is_open:
+            self.serial_port.close()
 
 # 初始化PLC管理器
 try:
     plc_manager = PLCManager()
-    logging.info("PLC管理器初始化成功")
+    logger.info("PLC管理器初始化成功")
 except Exception as e:
-    logging.error(f"PLC管理器初始化失败: {e}")
+    logger.error(f"PLC管理器初始化失败: {e}", exc_info=True)
     plc_manager = None
 
 @app.route('/detection_result', methods=['POST'])
@@ -175,7 +199,7 @@ def receive_detection_result():
         board_id = data.get('board_id', '')
         image_base64 = data.get('image', '')
         
-        logging.info(f"收到检测结果: {'有缺陷' if has_defect else '无缺陷'}")
+        logger.info(f"收到检测结果: {'有缺陷' if has_defect else '无缺陷'}")
         
         # 保存图片
         if image_base64:
@@ -188,7 +212,7 @@ def receive_detection_result():
                 
                 with open(filepath, 'wb') as f:
                     f.write(image_data)
-                logging.info(f"图片已保存: {filepath}")
+                logger.info(f"图片已保存: {filepath}")
                 
                 # 发送不同的PLC信号
                 if plc_manager:
@@ -201,12 +225,12 @@ def receive_detection_result():
                             command = bytes([8])
                         
                         plc_manager.send_command(command)
-                        logging.info(f"已发送{'NG' if has_defect else 'OK'}信号到PLC")
+                        logger.info(f"已发送{'NG' if has_defect else 'OK'}信号到PLC")
                     except Exception as e:
-                        logging.error(f"发送PLC信号失败: {e}")
+                        logger.error(f"发送PLC信号失败: {e}", exc_info=True)
                 
             except Exception as e:
-                logging.error(f"保存图片失败: {str(e)}")
+                logger.error(f"保存图片失败: {str(e)}", exc_info=True)
         
         return jsonify({
             'message': 'Success',
@@ -214,7 +238,7 @@ def receive_detection_result():
         })
         
     except Exception as e:
-        logging.error(f"处理检测结果时出错: {str(e)}")
+        logger.error(f"处理检测结果时出错: {str(e)}", exc_info=True)
         return jsonify({
             'message': 'Error',
             'error': str(e)
@@ -222,33 +246,32 @@ def receive_detection_result():
 
 @socketio.on('connect')
 def handle_connect():
-    logging.info('客户端已连接')
+    logger.info('客户端已连接')
     emit('connection_response', {'message': 'Connected'})
 
 @socketio.on('disconnect')
 def handle_disconnect():
-    logging.info('客户端已断开连接')
+    logger.info('客户端已断开连接')
 
 @socketio.on('release_signal')
 def handle_release_signal(data):
     message = data.get('message', '')
-    logging.info(f'收到放行信号: {message}')
+    logger.info(f'收到放行信号: {message}')
     
     # 发送放行信号到PLC
     if plc_manager:
         try:
             release_command = bytes([8])
             plc_manager.send_command(release_command)
-            logging.info("已发送PLC放行信号")
+            logger.info("已发送PLC放行信号")
         except Exception as e:
-            logging.error(f"发送PLC放行信号失败: {e}")
+            logger.error(f"发送PLC放行信号失败: {e}", exc_info=True)
 
 if __name__ == '__main__':
     try:
+        logger.info("启动服务器...")
         socketio.run(app, host='0.0.0.0', port=8080, debug=True)
     finally:
-        # 停止文件监控
         stop_file_monitoring()
-        # 停止PLC连接
         if plc_manager:
             plc_manager.close()

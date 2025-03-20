@@ -1,0 +1,123 @@
+2025-03-20 11:41:53,251 - Server - INFO - 开始自动查找PLC设备...
+2025-03-20 11:41:53,253 - Server - INFO - 发现以下COM端口: ['/dev/cu.BLTH', '/dev/cu.usbserial-1460', '/dev/cu.Bluetooth-Incoming-Port']
+2025-03-20 11:41:53,253 - Server - INFO - 尝试连接端口: /dev/cu.BLTH
+2025-03-20 11:41:53,253 - Server - INFO - 尝试连接PLC - 端口: /dev/cu.BLTH, 波特率: 9600
+2025-03-20 11:41:53,253 - Server - ERROR - PLC连接初始化失败: [Errno 16] could not open port /dev/cu.BLTH: [Errno 16] Resource busy: '/dev/cu.BLTH'
+2025-03-20 11:41:53,253 - Server - INFO - 尝试连接端口: /dev/cu.usbserial-1460
+2025-03-20 11:41:53,253 - Server - INFO - 尝试连接PLC - 端口: /dev/cu.usbserial-1460, 波特率: 9600
+2025-03-20 11:41:53,762 - Server - INFO - PLC连接初始化成功
+2025-03-20 11:41:53,762 - Server - INFO - 成功连接到PLC设备，端口: /dev/cu.usbserial-1460
+2025-03-20 11:41:53,762 - Server - INFO - PLC管理器初始化成功
+2025-03-20 11:41:53,763 - Server - INFO - 启动服务器...
+2025-03-20 11:41:53,764 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-20 11:41:53,764 - werkzeug - INFO -  * Running on http://172.20.10.2:8080/ (Press CTRL+C to quit)
+2025-03-20 11:41:53,764 - werkzeug - INFO -  * Restarting with stat
+2025-03-20 11:41:54,053 - Server - INFO - 开始自动查找PLC设备...
+2025-03-20 11:41:54,055 - Server - INFO - 发现以下COM端口: ['/dev/cu.BLTH', '/dev/cu.usbserial-1460', '/dev/cu.Bluetooth-Incoming-Port']
+2025-03-20 11:41:54,055 - Server - INFO - 尝试连接端口: /dev/cu.BLTH
+2025-03-20 11:41:54,055 - Server - INFO - 尝试连接PLC - 端口: /dev/cu.BLTH, 波特率: 9600
+2025-03-20 11:41:54,055 - Server - ERROR - PLC连接初始化失败: [Errno 16] could not open port /dev/cu.BLTH: [Errno 16] Resource busy: '/dev/cu.BLTH'
+2025-03-20 11:41:54,055 - Server - INFO - 尝试连接端口: /dev/cu.usbserial-1460
+2025-03-20 11:41:54,055 - Server - INFO - 尝试连接PLC - 端口: /dev/cu.usbserial-1460, 波特率: 9600
+2025-03-20 11:41:54,057 - Server - INFO - PLC连接初始化成功
+2025-03-20 11:41:54,057 - Server - INFO - 成功连接到PLC设备，端口: /dev/cu.usbserial-1460
+2025-03-20 11:41:54,057 - Server - INFO - PLC管理器初始化成功
+2025-03-20 11:41:54,058 - Server - INFO - 启动服务器...
+2025-03-20 11:41:54,058 - werkzeug - WARNING -  * Debugger is active!
+2025-03-20 11:41:54,066 - werkzeug - INFO -  * Debugger PIN: 761-570-155
+2025-03-20 11:43:18,933 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:43:18] "GET /socket.io/?transport=polling&b64=1&EIO=4 HTTP/1.1" 200 -
+2025-03-20 11:43:18,971 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:43:18] "GET /socket.io/?transport=polling&b64=1&EIO=4&sid=mlH3pYziw-E9xn__AAAA HTTP/1.1" 200 -
+2025-03-20 11:43:18,978 - Server - INFO - 客户端已连接
+2025-03-20 11:43:18,979 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:43:18] "POST /socket.io/?transport=polling&b64=1&EIO=4&sid=mlH3pYziw-E9xn__AAAA HTTP/1.1" 200 -
+2025-03-20 11:43:18,991 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:43:18] "GET /socket.io/?transport=polling&b64=1&EIO=4&sid=mlH3pYziw-E9xn__AAAA HTTP/1.1" 200 -
+2025-03-20 11:43:36,779 - Server - INFO - 收到PLC信号: b'7  '
+2025-03-20 11:43:36,779 - Server - INFO - PLC信号长度: 3
+2025-03-20 11:43:36,779 - root - INFO - 检测到'7'信号，开始监控文件以获取检测内容
+2025-03-20 11:43:36,780 - Server - INFO - 请求启动文件监控
+2025-03-20 11:43:36,780 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:43:36,780 - FileMonitor - INFO - 监控线程 Thread-12 (_monitor_loop) 开始运行
+2025-03-20 11:43:36,780 - FileMonitor - INFO - 创建并启动新的监控线程: Thread-12 (_monitor_loop)
+2025-03-20 11:43:36,781 - FileMonitor - INFO - 开始监控文件: /Users/universalaoi_1/Desktop/ml_scaner-main/ml_scanner_server/input/input.txt
+2025-03-20 11:43:36,781 - Server - INFO - 文件监控已启动
+2025-03-20 11:43:36,781 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:43:36,781 - FileMonitor - INFO - 内容经处理后为空，不调用回调函数
+2025-03-20 11:43:45,330 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:43:45,331 - FileMonitor - INFO - 读取到内容: H034-04342-B
+2025-03-20 11:43:45,331 - Server - INFO - 读取到文件内容: H034-04342-B
+2025-03-20 11:43:45,436 - Server - INFO - 计划延迟停止文件监控
+2025-03-20 11:43:45,436 - Server - INFO - 请求停止文件监控
+2025-03-20 11:43:45,436 - FileMonitor - INFO - 等待监控线程 Thread-12 (_monitor_loop) 终止...
+2025-03-20 11:43:45,831 - FileMonitor - INFO - 监控线程 Thread-12 (_monitor_loop) 检测到停止信号，退出循环
+2025-03-20 11:43:45,832 - FileMonitor - INFO - 监控线程 Thread-12 (_monitor_loop) 已退出
+2025-03-20 11:43:45,832 - FileMonitor - INFO - 监控线程已成功终止
+2025-03-20 11:43:45,832 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 15, 当前内容长度: 15
+2025-03-20 11:43:45,832 - Server - INFO - 文件监控已停止
+2025-03-20 11:43:53,435 - Server - INFO - 收到检测结果: 无缺陷
+2025-03-20 11:43:53,449 - Server - INFO - 图片已保存: /Users/universalaoi_1/Desktop/ml_scaner-main/ml_scanner_server/Images/OK/H034-04342-B.jpg
+2025-03-20 11:43:53,450 - Server - INFO - 发送PLC命令: 08
+2025-03-20 11:43:54,012 - Server - INFO - 收到放行信号: RELEASE
+2025-03-20 11:43:54,012 - Server - INFO - 发送PLC命令: 08
+2025-03-20 11:43:54,455 - Server - INFO - PLC响应: 
+2025-03-20 11:43:54,455 - Server - INFO - 已发送OK信号到PLC
+2025-03-20 11:43:54,457 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:43:54] "POST /detection_result HTTP/1.1" 200 -
+2025-03-20 11:43:55,013 - Server - INFO - PLC响应: 
+2025-03-20 11:43:55,013 - Server - INFO - 已发送PLC放行信号
+2025-03-20 11:44:09,362 - Server - INFO - 收到PLC信号: b'7  '
+2025-03-20 11:44:09,363 - Server - INFO - PLC信号长度: 3
+2025-03-20 11:44:09,363 - root - INFO - 检测到'7'信号，开始监控文件以获取检测内容
+2025-03-20 11:44:09,363 - Server - INFO - 请求启动文件监控
+2025-03-20 11:44:09,364 - FileMonitor - INFO - 继续监控文件，保留上次状态。上次大小: 15, 上次内容长度: 15
+2025-03-20 11:44:09,364 - FileMonitor - INFO - 监控线程 Thread-18 (_monitor_loop) 开始运行
+2025-03-20 11:44:09,364 - FileMonitor - INFO - 创建并启动新的监控线程: Thread-18 (_monitor_loop)
+2025-03-20 11:44:09,364 - FileMonitor - INFO - 开始监控文件: /Users/universalaoi_1/Desktop/ml_scaner-main/ml_scanner_server/input/input.txt
+2025-03-20 11:44:09,364 - Server - INFO - 文件监控已启动
+2025-03-20 11:44:09,364 - Server - INFO - 收到PLC信号: b''
+2025-03-20 11:44:09,365 - Server - INFO - PLC信号长度: 0
+2025-03-20 11:44:31,984 - FileMonitor - INFO - 文件增大，只读取新增部分
+2025-03-20 11:44:31,985 - FileMonitor - INFO - 读取到内容: N6DPXHJDV
+2025-03-20 11:44:31,985 - Server - INFO - 读取到文件内容: N6DPXHJDV
+2025-03-20 11:44:32,087 - Server - INFO - 计划延迟停止文件监控
+2025-03-20 11:44:32,087 - Server - INFO - 请求停止文件监控
+2025-03-20 11:44:32,088 - FileMonitor - INFO - 等待监控线程 Thread-18 (_monitor_loop) 终止...
+2025-03-20 11:44:32,486 - FileMonitor - INFO - 监控线程 Thread-18 (_monitor_loop) 检测到停止信号，退出循环
+2025-03-20 11:44:32,486 - FileMonitor - INFO - 监控线程 Thread-18 (_monitor_loop) 已退出
+2025-03-20 11:44:32,487 - FileMonitor - INFO - 监控线程已成功终止
+2025-03-20 11:44:32,487 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 26, 当前内容长度: 26
+2025-03-20 11:44:32,487 - Server - INFO - 文件监控已停止
+2025-03-20 11:44:34,964 - Server - INFO - 收到检测结果: 无缺陷
+2025-03-20 11:44:34,975 - Server - INFO - 图片已保存: /Users/universalaoi_1/Desktop/ml_scaner-main/ml_scanner_server/Images/OK/N6DPXHJDV.jpg
+2025-03-20 11:44:34,975 - Server - INFO - 发送PLC命令: 08
+2025-03-20 11:44:35,646 - Server - INFO - 收到放行信号: RELEASE
+2025-03-20 11:44:35,646 - Server - INFO - 发送PLC命令: 08
+2025-03-20 11:44:35,981 - Server - INFO - PLC响应: 
+2025-03-20 11:44:35,981 - Server - INFO - 已发送OK信号到PLC
+2025-03-20 11:44:35,983 - werkzeug - INFO - 172.20.10.3 - - [20/Mar/2025 11:44:35] "POST /detection_result HTTP/1.1" 200 -
+2025-03-20 11:44:36,650 - Server - INFO - PLC响应: 
+2025-03-20 11:44:36,650 - Server - INFO - 已发送PLC放行信号
+2025-03-20 11:45:00,493 - Server - INFO - 收到PLC信号: b'7  '
+2025-03-20 11:45:00,494 - Server - INFO - PLC信号长度: 3
+2025-03-20 11:45:00,494 - root - INFO - 检测到'7'信号，开始监控文件以获取检测内容
+2025-03-20 11:45:00,495 - Server - INFO - 请求启动文件监控
+2025-03-20 11:45:00,495 - FileMonitor - INFO - 初次启动监控，重置文件状态
+2025-03-20 11:45:00,496 - FileMonitor - INFO - 监控线程 Thread-2 (_monitor_loop) 开始运行
+2025-03-20 11:45:00,496 - FileMonitor - INFO - 创建并启动新的监控线程: Thread-2 (_monitor_loop)
+2025-03-20 11:45:00,496 - FileMonitor - INFO - 开始监控文件: /Users/universalaoi_1/Desktop/ml_scaner-main/ml_scanner_server/input/input.txt
+2025-03-20 11:45:00,497 - Server - INFO - 文件监控已启动
+2025-03-20 11:45:00,497 - FileMonitor - INFO - 首次读取，使用全部内容
+2025-03-20 11:45:00,497 - FileMonitor - INFO - 读取到内容: CH034-04342-BGN6DPXHJDV
+2025-03-20 11:45:00,498 - Server - INFO - 读取到文件内容: CH034-04342-BGN6DPXHJDV
+2025-03-20 11:45:00,599 - Server - INFO - 计划延迟停止文件监控
+2025-03-20 11:45:00,599 - Server - INFO - 请求停止文件监控
+2025-03-20 11:45:00,599 - FileMonitor - INFO - 等待监控线程 Thread-2 (_monitor_loop) 终止...
+2025-03-20 11:45:00,999 - FileMonitor - INFO - 监控线程 Thread-2 (_monitor_loop) 检测到停止信号，退出循环
+2025-03-20 11:45:00,999 - FileMonitor - INFO - 监控线程 Thread-2 (_monitor_loop) 已退出
+2025-03-20 11:45:01,000 - FileMonitor - INFO - 监控线程已成功终止
+2025-03-20 11:45:01,000 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 26, 当前内容长度: 26
+2025-03-20 11:45:01,000 - Server - INFO - 文件监控已停止
+2025-03-20 12:09:24,349 - FileMonitor - INFO - 等待监控线程 Thread-7 终止...
+2025-03-20 12:09:24,723 - FileMonitor - INFO - 监控线程 Thread-7 检测到停止信号，退出循环
+2025-03-20 12:09:24,723 - FileMonitor - INFO - 监控线程 Thread-7 已退出
+2025-03-20 12:09:24,725 - FileMonitor - INFO - 监控线程已成功终止
+2025-03-20 12:09:24,725 - FileMonitor - INFO - 文件监控已暂停，保留状态数据。当前文件大小: 35, 当前内容长度: 35
+2025-03-20 12:09:24,726 - FileMonitor - INFO - 监控已经停止，忽略重复停止请求
