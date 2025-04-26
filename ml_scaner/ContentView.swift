@@ -84,9 +84,9 @@ struct ContentView: View {
                 self.detectionManager.startCamera()
             }
             
-            self.detectionManager.onDetectionComplete = { hasDefect in
-                self.addLog("检测完成: \(hasDefect ? "有缺陷" : "无缺陷")")
-                self.detectionManager.sendDetectionResult(hasDefect: hasDefect)
+            self.detectionManager.onDetectionComplete = {
+//                self.addLog("检测完成: \(hasDefect ? "有缺陷" : "无缺陷")")
+                self.detectionManager.sendDetectionResult()
             }
         }
     }

@@ -10,7 +10,7 @@ class DetectionManager: ObservableObject {
     var currentBoardId: String = ""
     
     var onLog: ((String) -> Void)?
-    var onDetectionComplete: ((Bool) -> Void)?
+    var onDetectionComplete: (() -> Void)?
     
     init() {
         log("初始化检测管理器")
@@ -27,62 +27,66 @@ class DetectionManager: ObservableObject {
     
     func processImage(_ image: UIImage) {
         previewImage = image
-        log("开始分析图片")
+//        log("开始分析图片")
         
         guard let cgImage = image.cgImage else {
             log("无法获取图像数据")
             return
         }
         
-        do {
-            let input = try primer_modelInput(
-                imageWith: cgImage,
-                iouThreshold: 0.5,
-                confidenceThreshold: 0.3
-            )
-            
-            let model = try primer_model()
-            let prediction = try model.prediction(input: input)
-            
-            let boxes = prediction.nmsed_pred_boxesShapedArray
-            let scores = prediction.nmsed_pred_scoresShapedArray
-            
-            var hasDefect = false
-            var resultDescription = ""
-            let detectionCount = scores.shape[0]
-            
-            if detectionCount > 0 {
-                for i in 0..<detectionCount {
-                    guard let score = scores[i].scalar,
-                          let x1 = boxes[i, 0].scalar,
-                          let y1 = boxes[i, 1].scalar,
-                          let x2 = boxes[i, 2].scalar,
-                          let y2 = boxes[i, 3].scalar else {
-                        continue
-                    }
-                    
-                    if score > 0.3 {
-                        hasDefect = true
-                        resultDescription += String(
-                            format: "发现缺陷(置信度: %.1f%%, 位置: [%.2f, %.2f, %.2f, %.2f]) ",
-                            score * 100,
-                            x1, y1, x2, y2
-                        )
-                    }
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.onDetectionComplete?(hasDefect)
-                self.log(resultDescription.isEmpty ? "未检测到明显缺陷" : resultDescription)
-            }
-            
-        } catch {
-            log("图像处理失败: \(error)")
+        DispatchQueue.main.async {
+            self.onDetectionComplete?()
         }
+        
+//        do {
+//            let input = try primer_modelInput(
+//                imageWith: cgImage,
+//                iouThreshold: 0.5,
+//                confidenceThreshold: 0.3
+//            )
+//            
+//            let model = try primer_model()
+//            let prediction = try model.prediction(input: input)
+//            
+//            let boxes = prediction.nmsed_pred_boxesShapedArray
+//            let scores = prediction.nmsed_pred_scoresShapedArray
+//            
+//            var hasDefect = false
+//            var resultDescription = ""
+//            let detectionCount = scores.shape[0]
+//            
+//            if detectionCount > 0 {
+//                for i in 0..<detectionCount {
+//                    guard let score = scores[i].scalar,
+//                          let x1 = boxes[i, 0].scalar,
+//                          let y1 = boxes[i, 1].scalar,
+//                          let x2 = boxes[i, 2].scalar,
+//                          let y2 = boxes[i, 3].scalar else {
+//                        continue
+//                    }
+//                    
+//                    if score > 0.3 {
+//                        hasDefect = true
+//                        resultDescription += String(
+//                            format: "发现缺陷(置信度: %.1f%%, 位置: [%.2f, %.2f, %.2f, %.2f]) ",
+//                            score * 100,
+//                            x1, y1, x2, y2
+//                        )
+//                    }
+//                }
+//            }
+//            
+//            DispatchQueue.main.async {
+//                self.onDetectionComplete?(hasDefect)
+////                self.log(resultDescription.isEmpty ? "未检测到明显缺陷" : resultDescription)
+//            }
+//            
+//        } catch {
+//            log("图像处理失败: \(error)")
+//        }
     }
     
-    func sendDetectionResult(hasDefect: Bool) {
+    func sendDetectionResult() {
         guard let image = previewImage else {
             log("没有图片可发送")
             return
@@ -96,7 +100,7 @@ class DetectionManager: ObservableObject {
         let base64String = imageData.base64EncodedString()
         
         let parameters: [String: Any] = [
-            "has_defect": hasDefect,
+//            "has_defect": hasDefect,
             "board_id": currentBoardId,
             "image": base64String
         ]

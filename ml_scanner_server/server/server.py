@@ -207,18 +207,18 @@ except Exception as e:
 def receive_detection_result():
     try:
         data = request.json
-        has_defect = data.get('has_defect', False)
+        # has_defect = data.get('has_defect', False)
         board_id = data.get('board_id', '')
         image_base64 = data.get('image', '')
         
-        logger.info(f"收到检测结果: {'有缺陷' if has_defect else '无缺陷'}")
+        # logger.info(f"收到检测结果: {'有缺陷' if has_defect else '无缺陷'}")
         
         # 保存图片
         if image_base64:
             try:
                 image_data = base64.b64decode(image_base64)
                 
-                save_dir = IMAGES_NG_DIR if has_defect else IMAGES_OK_DIR
+                save_dir = IMAGES_OK_DIR
                 filename = f"{board_id}.jpg"
                 filepath = save_dir / filename
                 
@@ -226,20 +226,20 @@ def receive_detection_result():
                     f.write(image_data)
                 logger.info(f"图片已保存: {filepath}")
                 
-                # 发送不同的PLC信号
-                if plc_manager:
-                    try:
-                        if has_defect:
-                            # NG信号
-                            command = bytes([8])
-                        else:
-                            # OK信号
-                            command = bytes([8])
+                # # 发送不同的PLC信号
+                # if plc_manager:
+                #     try:
+                #         if has_defect:
+                #             # NG信号
+                #             command = bytes([8])
+                #         else:
+                #             # OK信号
+                #             command = bytes([8])
                         
-                        plc_manager.send_command(command)
-                        logger.info(f"已发送{'NG' if has_defect else 'OK'}信号到PLC")
-                    except Exception as e:
-                        logger.error(f"发送PLC信号失败: {e}", exc_info=True)
+                #         plc_manager.send_command(command)
+                #         logger.info(f"已发送{'NG' if has_defect else 'OK'}信号到PLC")
+                #     except Exception as e:
+                #         logger.error(f"发送PLC信号失败: {e}", exc_info=True)
                 
             except Exception as e:
                 logger.error(f"保存图片失败: {str(e)}", exc_info=True)
@@ -270,14 +270,14 @@ def handle_release_signal(data):
     message = data.get('message', '')
     logger.info(f'收到放行信号: {message}')
     
-    # 发送放行信号到PLC
-    if plc_manager:
-        try:
-            release_command = bytes([8])
-            plc_manager.send_command(release_command)
-            logger.info("已发送PLC放行信号")
-        except Exception as e:
-            logger.error(f"发送PLC放行信号失败: {e}", exc_info=True)
+    # # 发送放行信号到PLC
+    # if plc_manager:
+    #     try:
+    #         release_command = bytes([8])
+    #         plc_manager.send_command(release_command)
+    #         logger.info("已发送PLC放行信号")
+    #     except Exception as e:
+    #         logger.error(f"发送PLC放行信号失败: {e}", exc_info=True)
 
 if __name__ == '__main__':
     try:
