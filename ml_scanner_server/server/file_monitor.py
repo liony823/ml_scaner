@@ -72,18 +72,29 @@ class InputFileMonitor:
         thread_to_join = None
         with self.thread_lock:
             if self.monitor_thread and self.monitor_thread.is_alive():
-                thread_to_join = self.monitor_thread
+                if self.monitor_thread == threading.current_thread():
+                    self.logger.warning("尝试在监控线程自身中停止监控，跳过等待步骤")
+                    # 不执行join操作，只清理引用
+                    self.monitor_thread = None
+                    self.logger.info("监控线程引用已清理")
+                    return
+                else:
+                    thread_to_join = self.monitor_thread
         
         # 在锁外等待线程终止，避免死锁
         if thread_to_join:
             self.logger.info(f"等待监控线程 {thread_to_join.name} 终止...")
-            thread_to_join.join(timeout=2)
+            try:
+                thread_to_join.join(timeout=2)
+                # 检查线程是否真正终止
+                if thread_to_join.is_alive():
+                    self.logger.warning("监控线程未能在指定时间内终止，可能存在资源泄漏")
+                else:
+                    self.logger.info("监控线程已成功终止")
+            except Exception as e:
+                self.logger.error(f"等待监控线程终止时出错: {e}", exc_info=True)
             
-            # 检查线程是否真正终止
-            if thread_to_join.is_alive():
-                self.logger.warning("监控线程未能在指定时间内终止，可能存在资源泄漏")
-            else:
-                self.logger.info("监控线程已成功终止")
+
         
         # 清理线程引用
         with self.thread_lock:

@@ -45,18 +45,30 @@ monitor_lock = threading.Lock()
 
 # 当收到文件内容时的回调函数
 def on_file_content(content):
-    logger.info(f"读取到文件内容: {content}")
-    # 发送开始检测的信号
-    socketio.emit('start_detection', {'message': 'START', 'data': content})
+    try:
+        logger.info(f"读取到文件内容: {content}")
+        # 发送开始检测的信号
+        socketio.emit('start_detection', {'message': 'START', 'data': content})
 
-    def delayed_stop():
-        logger.info("计划延迟停止文件监控")
-        stop_file_monitoring()
+        def safe_stop():
+            logger.info("在新线程中安全停止文件监控")
+            stop_file_monitoring()
+            
+        stop_thread = threading.Thread(target=safe_stop)
+        stop_thread.daemon = True
+        stop_thread.start()
+        logger.info(f"已创建停止线程: {stop_thread.name}")
+    except Exception as e:
+        logger.error(f"发送信号时出错: {e}", exc_info=True)
+
+    # def delayed_stop():
+    #     logger.info("计划延迟停止文件监控")
+    #     stop_file_monitoring()
     
-    # 使用线程延迟停止监控
-    timer = threading.Timer(0.1, delayed_stop)
-    timer.daemon = True
-    timer.start()
+    # # 使用线程延迟停止监控
+    # timer = threading.Timer(0.1, delayed_stop)
+    # timer.daemon = True
+    # timer.start()
 
 def start_file_monitoring():
     global file_monitor, last_instance_id
